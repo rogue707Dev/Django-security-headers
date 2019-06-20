@@ -9,7 +9,7 @@ Detailed documentation is in the "docs" directory.
 Quick start
 -----------
 
-1. Add the middlewares::
+1. Add the middlewares code:: python
 
    MIDDLEWARES = [
        ...
@@ -18,6 +18,6 @@ Quick start
        "security_headers.middleware.extra_security_middleware"
    ]
 
-2. (optional) Add the default settings by adding to your `settings.py`::
+2. (optional) Add the default settings by adding to your `settings.py` code:: python
 
    from security_headers.settings import *
