@@ -20,6 +20,7 @@ setup(
     url="",
     author="Scivero",
     author_email="",
+    install_requires=["django-csp"],
     classifiers=[
         "Environment :: Web Environment",
         "Framework :: Django",
