@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.conf import settings
 
 
-def resp_set_headers_middleware(get_response):
+def extra_security_headers_middleware(get_response):
     """
     Sets all wanted security headers common to all responses.
     """
@@ -18,7 +18,9 @@ def resp_set_headers_middleware(get_response):
                 " ".join(iframe_allowed_from)
             )
 
-        resp["Referrer-Policy"] = "same-origin"
+        resp["Referrer-Policy"] = settings.get(
+            "REFERRER_POLICY", "same-origin"
+        )
 
         return resp
 
