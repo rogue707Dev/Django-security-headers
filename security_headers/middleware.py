@@ -12,15 +12,17 @@ def extra_security_headers_middleware(get_response):
     def middleware(req):
         resp = get_response(req)
 
-        iframe_allowed_from = settings.get("FRAMING_ALLOWED_FROM", [])
-        if iframe_allowed_from:
+        if hasattr(settings, "FRAMING_ALLOWED_FROM"):
             resp["X-Frame-Options"] = "allow-from {}".format(
-                " ".join(iframe_allowed_from)
+                " ".join(settings.FRAMING_ALLOWED_FROM)
             )
+        else:
+            resp["X-Frame-Options"] = "deny"
 
-        resp["Referrer-Policy"] = settings.get(
-            "REFERRER_POLICY", "same-origin"
-        )
+        if hasattr(settings, "REFERRER_POLICY"):
+            resp["Referrer-Policy"] = settings.REFERRER_POLICY
+        else:
+            resp["Referrer-Policy"] = "same-origin"
 
         return resp
 
