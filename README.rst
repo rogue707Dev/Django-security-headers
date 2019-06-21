@@ -6,6 +6,7 @@ Security Headers is a simple Django app to add configurable security headers to 
 
 Detailed documentation is in the "docs" directory.
 
+
 Quick start
 -----------
 

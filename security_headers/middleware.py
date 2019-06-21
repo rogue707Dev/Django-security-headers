@@ -6,7 +6,7 @@ from django.conf import settings
 
 def extra_security_headers_middleware(get_response):
     """
-    Sets all wanted security headers common to all responses.
+    Sets security headers specified in SETTINGS on all responses.
     """
 
     def middleware(req):
