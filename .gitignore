@@ -2,3 +2,6 @@ db.sqlite3
 venv/
 .venv
 __pycache__
+*.egg-info
+pip-wheel-metadata
+.pytest_cache

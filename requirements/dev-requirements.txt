@@ -1,0 +1,6 @@
+-e .
+pre-commit
+pytest-django
+tox
+
+-r ./base-requirements.txt

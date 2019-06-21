@@ -35,17 +35,16 @@ Quick start
 
 4. (Optional) To run localserver: code::python
 
-    python settings.py runserver
+    python security_headers.py runserver
 
 
-5. (Optional) Set up a local sqlite3 db for testing.  Run the following from the python shell and then create a superuser: code::python
-
-    import sqlite3
-    sqlite3.connect("db.sqlite3")
-
-
-6. (optional) For development using a localhost server, it's also recommended to add to your `settings.py` code:: python
+5. (Optional) For development using a localhost server, it's also recommended to add to your `settings.py` code:: python
 
    CSRF_COOKIE_SECURE = not DEBUG
    SECURE_SSL_REDIRECT = not DEBUG
    SESSION_COOKIE_SECURE = not DEBUG
+
+
+6. To run tests: code:: python
+
+    pytest
