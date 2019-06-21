@@ -16,6 +16,7 @@ CSP_IMG_SRC = ["*", "data:"]
 CSP_MEDIA_SRC = ["*", "data:"]
 CSP_SCRIPT_SRC = ["'self'", "ajax.googleapis.com", "cdn.polyfill.io"]
 CSP_STYLE_SRC = ["'self'", "fonts.googleapis.com"]
+CSP_INCLUDE_NONCE_IN = ["script-src", "style-src"]
 
 # Extra security middleware settings
 FRAMING_ALLOWED_FROM = []
