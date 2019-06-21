@@ -30,21 +30,24 @@ Quick start
 
 3. (Optional) Add the default settings by adding to your local `settings.py`: code:: python
 
-    from security_headers.settings import *
+    from security_headers.defaults import *
 
 
-4. (Optional) To run localserver: code::python
+4. (Optional) For development using a localhost server, it's recommended to add to your `settings.py` code:: python
+
+    CSRF_COOKIE_SECURE = not DEBUG
+    SECURE_SSL_REDIRECT = not DEBUG
+    SESSION_COOKIE_SECURE = not DEBUG
+
+
+Development
+-----------
+
+1. To run localserver: code::python
 
     python security_headers.py runserver
 
 
-5. (Optional) For development using a localhost server, it's also recommended to add to your `settings.py` code:: python
-
-   CSRF_COOKIE_SECURE = not DEBUG
-   SECURE_SSL_REDIRECT = not DEBUG
-   SESSION_COOKIE_SECURE = not DEBUG
-
-
-6. To run tests: code:: python
+2. To run tests: code:: python
 
     pytest
