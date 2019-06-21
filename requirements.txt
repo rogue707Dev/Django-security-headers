@@ -1,2 +1,3 @@
-Django
+Django==1.11.20
 django-csp
+pre-commit
