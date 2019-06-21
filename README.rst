@@ -18,6 +18,7 @@ Quick start
        ...
     ]
 
+
 2. (Optional) Add the app so that domains from which FRAMING_ALLOWED_FROM should be true can be set in the admin: code:: python
 
     INSTALLED_APPS = [
@@ -25,6 +26,7 @@ Quick start
      "security_headers",
      ...
     ]
+
 
 3. (Optional) Add the default settings by adding to your local `settings.py`: code:: python
 
@@ -40,3 +42,10 @@ Quick start
 
     import sqlite3
     sqlite3.connect("db.sqlite3")
+
+
+6. (optional) For development using a localhost server, it's also recommended to add to your `settings.py` code:: python
+
+   CSRF_COOKIE_SECURE = not DEBUG
+   SECURE_SSL_REDIRECT = not DEBUG
+   SESSION_COOKIE_SECURE = not DEBUG
