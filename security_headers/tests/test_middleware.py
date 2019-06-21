@@ -1,15 +1,25 @@
 # Follows patterns in django-csp by Mozilla
+import pytest
+
 from django.http import HttpResponse
-from django.test import RequestFactory
 
-from security_headers.middleware import extra_security_headers_middleware as m
-
-
-rf = RequestFactory()
+from security_headers.middleware import extra_security_headers_middleware
 
 
-def test_add_feature_policy():
-    request = rf.get("/")
-    response = HttpResponse()
-    new_response = m(request, response)
-    assert "FEATURE_POLICY" in new_response
+@pytest.fixture
+def response(rf):
+    middleware = extra_security_headers_middleware(HttpResponse)
+    response = middleware(rf.get("/"))
+    return response
+
+
+def test_add_feature_policy(response):
+    assert response.has_header("Feature-Policy")
+
+
+def test_add_referrer_policy(response):
+    assert response.has_header("Referrer-Policy")
+
+
+def test_add_xframe_options_policy(response):
+    assert response.has_header("X-Frame-Options")

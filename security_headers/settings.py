@@ -21,6 +21,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "csp.middleware.CSPMiddleware",
+    "security_headers.middleware.extra_security_headers_middleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -51,3 +53,14 @@ DATABASES = {
 }
 
 STATIC_URL = "/static/"
+
+try:
+    from .defaults import *  # noqa
+except ImportError:
+    import warnings
+
+    warnings.warn("File defaults.py not found.")  # noqa
+
+CSRF_COOKIE_SECURE = not DEBUG
+SECURE_SSL_REDIRECT = not DEBUG
+SESSION_COOKIE_SECURE = not DEBUG

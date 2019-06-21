@@ -12,9 +12,9 @@ Quick start
 1. Add the middleware: code:: python
 
     MIDDLEWARES = [
-       "django.middleware.security.SecurityMiddleware",
-       "csp.middleware.CSPMiddleware",
-       "security_headers.middleware.extra_security_middleware",
+      "django.middleware.security.SecurityMiddleware",
+      "csp.middleware.CSPMiddleware",
+      "security_headers.middleware.extra_security_headers_middleware",
        ...
     ]
 
