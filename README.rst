@@ -2,9 +2,9 @@
 Security Headers
 ================
 
-Security Headers is a simple Django app to add configurable security headers to django responses.
+Security Headers is a simple Django app, inspired by Scott Helme's _securityheaders.com: https://securityheaders.com, which adds configurable security headers to all Django responses.  It works in parallel with the excellent Django-CSP package maintained by Mozilla and aims to provide a basic framework for achieving an A+ grade.
 
-Detailed documentation is in the "docs" directory.
+Detailed documentation is available in the "docs" directory.
 
 
 Quick start
@@ -20,21 +20,21 @@ Quick start
     ]
 
 
-2. (Optional) Add the app so that domains from which FRAMING_ALLOWED_FROM should be true can be set in the admin: code:: python
+2. (Optional) If you wish to allow framing from certain domains, add the app to INSTALLED_APPS which will expose a simple admin interface for specifying safe domains: code:: python
 
     INSTALLED_APPS = [
-     ...
-     "security_headers",
-     ...
+      ...
+      "security_headers",
+      ...
     ]
 
 
-3. (Optional) Add the default settings by adding to your local `settings.py`: code:: python
+3. (Optional) Add all default security header settings by importing to your local `settings.py`: code:: python
 
-    from security_headers.defaults import *
+    from security_headers.defaults import *  # noqa
 
 
-4. (Optional) For development using a localhost server, it's recommended to add to your `settings.py` code:: python
+4. (Optional) During development using localhost server, it is recommended to overwrite some default settings (which requires SSL) at the very end of your `settings.py` file: code:: python
 
     CSRF_COOKIE_SECURE = not DEBUG
     SECURE_SSL_REDIRECT = not DEBUG
