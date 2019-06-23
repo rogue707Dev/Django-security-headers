@@ -20,5 +20,4 @@ CSP_INCLUDE_NONCE_IN = ["script-src", "style-src"]
 CSP_REPORT_PERCENTAGE = 0.1
 
 # Default extra SecurityMiddleware settings
-FRAMING_ALLOWED_FROM = []
 REFERRER_POLICY = "same-origin"
