@@ -5,6 +5,6 @@ from django.test import LiveServerTestCase
 
 class FunctionalTests(LiveServerTestCase):
     def test_observatory(self):
-        results = scan(self.live_server_url, http_port=8000)
+        results = scan("localhost", http_port=str(self.server_thread.port))
         print(results)
-        pass
+        assert results["scan"]["score"] >= 90
