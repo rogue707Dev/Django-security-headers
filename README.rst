@@ -2,7 +2,7 @@
 Security Headers
 ================
 
-Security Headers is a simple Django app, largely inspired by Scott Helme's `securityheaders.com <https://securityheaders.com>`_, which adds configurable security headers to all Django responses.  It works in parallel with the excellent `Django-CSP <https://github.com/mozilla/django-csp>`_ package maintained by Mozilla and aims to provide a basic framework for achieving an A+ grade.
+Security Headers is a simple Django app (originally inspired by Scott Helme's `securityheaders.com <https://securityheaders.com>`_) that adds configurable security headers to all Django responses.  It works in parallel with the excellent `Django-CSP <https://github.com/mozilla/django-csp>`_ package and is self-tested using the `Http Observatory <https://github.com/mozilla/http-observatory>`_ both maintained by Mozilla.  The goal of this package is to provide a basic framework for achieving an A+ grade.
 
 Detailed documentation is available in the "docs" directory.
 
