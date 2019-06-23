@@ -9,7 +9,7 @@ Detailed documentation is available in the "docs" directory.
 Quick start
 -----------
 
-1. Add the middleware: highlight:: 
+1. Add the middleware: highlight::
 
     MIDDLEWARES = [
       "django.middleware.security.SecurityMiddleware",
@@ -19,7 +19,7 @@ Quick start
     ]
 
 
-2. (Optional) If you wish to allow framing from certain domains, add the app to INSTALLED_APPS which will expose a simple admin interface for specifying safe domains:  highlight:: 
+2. (Optional) If you wish to allow framing from certain domains, add the app to INSTALLED_APPS which will expose a simple admin interface for specifying safe domains:  highlight::
 
     INSTALLED_APPS = [
       ...
@@ -28,12 +28,12 @@ Quick start
     ]
 
 
-3. (Optional) Add all default security header settings by importing to your local `settings.py`:  highlight:: 
+3. (Optional) Add all default security header settings by importing to your local `settings.py`:  highlight::
 
     from security_headers.defaults import *  # noqa
 
 
-4. (Optional) During development using localhost server, it is recommended to overwrite some default settings (which requires SSL) at the very end of your `settings.py` file: highlight:: 
+4. (Optional) During development using http localhost server, it is recommended to overwrite some default settings (which requires SSL) at the very end of your `settings.py` file: highlight::
 
     CSRF_COOKIE_SECURE = not DEBUG
     SECURE_SSL_REDIRECT = not DEBUG
@@ -43,13 +43,16 @@ Quick start
 Development
 -----------
 
-1. To run localserver:  highlight:: 
+1. To run localserver:  highlight::
 
     python security_headers.py runserver
 
 
-2. To run tests:  highlight:: 
+2. To run tests, start a secure localhost (at 127.0.0.1:8000) to enable https:  highlight::
+
+    python security_headers.py runsslserver
+
+
+3. Run test suite:  highlight::
 
     pytest
-
-

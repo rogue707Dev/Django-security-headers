@@ -5,12 +5,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = "security-headers"
 
-DEBUG = True
+DEBUG = False
+
+ALLOWED_HOSTS = ["*"]
 
 ROOT_URLCONF = "security_headers.urls"
 
 INSTALLED_APPS = [
     "security_headers",
+    "sslserver",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

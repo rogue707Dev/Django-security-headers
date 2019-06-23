@@ -5,6 +5,7 @@
 pre-commit
 pytest-django
 tox
+django-sslserver
 
 ## http-observatory and its dependencies
 -e git+https://github.com/mozilla/http-observatory#egg=httpobs
