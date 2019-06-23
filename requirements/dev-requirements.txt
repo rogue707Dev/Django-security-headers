@@ -1,6 +1,8 @@
+-r ./base-requirements.txt
+
 -e .
 pre-commit
 pytest-django
 tox
 
--r ./base-requirements.txt
+-e git+https://github.com/mozilla/http-observatory#egg=httpobs

@@ -1,4 +1,3 @@
-# Follows patterns in django-csp by Mozilla
 import pytest
 
 from django.http import HttpResponse
