@@ -43,16 +43,21 @@ Quick start
 Development
 -----------
 
-1. To run localserver:  highlight::
+1. Install dev requirements:  highlight::
+
+    pip install -r requirements/dev-requirements.txt
+    
+
+2. To run localserver:  highlight::
 
     python security_headers.py runserver
 
 
-2. To run tests, start a secure localhost (at 127.0.0.1:8000) to enable https:  highlight::
+3. To run tests, start a secure localhost (at 127.0.0.1:8000) to enable https:  highlight::
 
     python security_headers.py runsslserver
 
 
-3. Run test suite:  highlight::
+4. Run test suite:  highlight::
 
     pytest
