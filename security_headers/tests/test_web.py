@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from httpobs.scanner.local import scan
@@ -5,34 +6,41 @@ from selenium.webdriver.firefox.webdriver import WebDriver
 
 from django.test import LiveServerTestCase
 from django.urls import reverse
-from django.utils.decorators import classproperty
 
 from security_headers.models import FramingAllowedFrom
 
 
-class WebTests(LiveServerTestCase):
-    @classproperty
-    def domain(cls):
-        return cls.host
-
-    @classmethod
-    def setUpClass(cls):
-        super(WebTests, cls).setUpClass()
-        cls.selenium = WebDriver()
-        cls.selenium.implicitly_wait(10)
-
+class LiveServerTests(LiveServerTestCase):
     def test_allow_xframe(self):
         """
-        Add some allowed domains and verify that they appear in header on a
+        Add whitelisted domains only and verify that they appear in header on a
         per request basis.
         """
         FramingAllowedFrom.objects.create(domain="scivero.com")
-        FramingAllowedFrom.objects.create(domain=self.domain)
+        FramingAllowedFrom.objects.create(domain="testserver")
         assert FramingAllowedFrom.objects.count() == 2
 
-        self.client.get("/")
+        response = self.client.get("/")
+        assert response.has_header("X-Frame-Options")
+        assert response["X-Frame-Options"] == "allow-from testserver"
 
-    def test_observatory(self):
+        response = self.client.get("/", HTTP_HOST="scivero.com")
+        assert response.has_header("X-Frame-Options")
+        assert response["X-Frame-Options"] == "allow-from scivero.com"
+
+        response = self.client.get("/", HTTP_HOST="google.com")
+        assert response.has_header("X-Frame-Options")
+        assert response["X-Frame-Options"] == "deny"
+
+
+class HttpObservatoryTests(LiveServerTestCase):
+    @classmethod
+    def setUpClass(cls):
+        super(HttpObservatoryTests, cls).setUpClass()
+        cls.selenium = WebDriver()
+        cls.selenium.implicitly_wait(10)
+
+    def test_http_observatory(self):
         """
         Run the Mozilla Http Observatory against local ssl server.
 

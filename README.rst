@@ -31,7 +31,7 @@ Quick start
 
 3. (Optional) Add all default security header settings by importing to your local `settings.py`:  highlight::
 
-    from security_headers.defaults import *  # noqa
+    from security_headers.defaults import *
 
 
 4. (Optional) During development using http localhost server, at the very end of your `settings.py` file you will need to overwrite some default settings which require SSL.  Reducing SECURE_HSTS_SECONDS time is also a good idea: highlight::

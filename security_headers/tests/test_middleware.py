@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 import pytest
@@ -14,13 +15,16 @@ def response(rf):
     return response
 
 
+@pytest.mark.django_db
 def test_add_feature_policy(response):
     assert response.has_header("Feature-Policy")
 
 
+@pytest.mark.django_db
 def test_add_referrer_policy(response):
     assert response.has_header("Referrer-Policy")
 
 
+@pytest.mark.django_db
 def test_add_xframe_options_policy(response):
     assert response.has_header("X-Frame-Options")

@@ -2,6 +2,9 @@
 from __future__ import unicode_literals
 
 from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
+
+from security_headers.models import FramingAllowedFrom
 
 
 def extra_security_headers_middleware(get_response):
@@ -12,11 +15,10 @@ def extra_security_headers_middleware(get_response):
     def middleware(req):
         resp = get_response(req)
 
-        if hasattr(settings, "FRAMING_ALLOWED_FROM"):
-            resp["X-Frame-Options"] = "allow-from {}".format(
-                " ".join(settings.FRAMING_ALLOWED_FROM)
-            )
-        else:
+        try:
+            allowed_domain = FramingAllowedFrom.objects.get(domain=req.get_host())
+            resp["X-Frame-Options"] = "allow-from {}".format(allowed_domain)
+        except ObjectDoesNotExist:
             resp["X-Frame-Options"] = "deny"
 
         if hasattr(settings, "REFERRER_POLICY"):
