@@ -48,18 +48,23 @@ Development
 1. Install dev requirements:  highlight::
 
     pip install -r requirements/dev-requirements.txt
+    
+    
+2. Install pre-commit hooks:  highlight::
 
+    pre-commit install
+    
 
-2. To run localserver:  highlight::
+3. To run localserver:  highlight::
 
     python security_headers.py runserver
 
 
-3. To run tests, start a secure localhost (at 127.0.0.1:8000) to enable https:  highlight::
+4. To run tests or to get http-observatory scan report, start a secure localhost (at 127.0.0.1:8000) to enable https:  highlight::
 
     python security_headers.py runsslserver
 
 
-4. Then run test suite as a separate process:  highlight::
+5. Run test suite as a separate process:  highlight::
 
     pytest
