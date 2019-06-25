@@ -1,4 +1,5 @@
 import os
+import sys
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -64,6 +65,11 @@ except ImportError:
 
     warnings.warn("File defaults.py not found.")  # noqa
 
-CSRF_COOKIE_SECURE = not DEBUG
-SECURE_SSL_REDIRECT = not DEBUG
-SESSION_COOKIE_SECURE = not DEBUG
+if "runsslserver" in sys.argv:
+    SSL_CONTEXT = True
+else:
+    SSL_CONTEXT = False
+
+CSRF_COOKIE_SECURE = SSL_CONTEXT
+SECURE_SSL_REDIRECT = SSL_CONTEXT
+SESSION_COOKIE_SECURE = SSL_CONTEXT

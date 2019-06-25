@@ -4,7 +4,7 @@ SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
-SECURE_HSTS_SECONDS = 3600
+SECURE_HSTS_SECONDS = 183 * 24 * 60 * 60  # 6-month default
 SECURE_SSL_REDIRECT = True  # set to False for localhost development
 SESSION_COOKIE_SECURE = True  # set to False for localhost development
 

@@ -6,6 +6,7 @@ Security Headers is a simple Django app (originally inspired by Scott Helme's `s
 
 Detailed documentation is available in the "docs" directory.
 
+
 Quick start
 -----------
 
@@ -33,11 +34,12 @@ Quick start
     from security_headers.defaults import *  # noqa
 
 
-4. (Optional) During development using http localhost server, it is recommended to overwrite some default settings (which requires SSL) at the very end of your `settings.py` file: highlight::
+4. (Optional) During development using http localhost server, at the very end of your `settings.py` file you will need to overwrite some default settings which require SSL.  Reducing SECURE_HSTS_SECONDS time is also a good idea: highlight::
 
     CSRF_COOKIE_SECURE = not DEBUG
     SECURE_SSL_REDIRECT = not DEBUG
     SESSION_COOKIE_SECURE = not DEBUG
+    SECURE_HSTS_SECONDS = 3600
 
 
 Development
@@ -46,7 +48,7 @@ Development
 1. Install dev requirements:  highlight::
 
     pip install -r requirements/dev-requirements.txt
-    
+
 
 2. To run localserver:  highlight::
 
@@ -58,6 +60,6 @@ Development
     python security_headers.py runsslserver
 
 
-4. Run test suite:  highlight::
+4. Then run test suite as a separate process:  highlight::
 
     pytest
