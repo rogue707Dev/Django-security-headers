@@ -6,5 +6,6 @@ pre-commit
 pytest-django
 selenium<4
 sphinx
+sphinx_rtd_theme
 tox
 twine
