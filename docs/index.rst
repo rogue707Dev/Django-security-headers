@@ -92,10 +92,3 @@ highlight::
 
     cd docs
     make html
-
-
-Navigation
-----------
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
