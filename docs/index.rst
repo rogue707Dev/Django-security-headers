@@ -10,9 +10,7 @@ Welcome to Django Security Headers's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   middleware.rst
-   models.rst
-
+   contents.rst
 
 Introduction
 ------------
