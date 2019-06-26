@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from httpobs.scanner.local import scan
 from selenium.webdriver.firefox.webdriver import WebDriver
 
@@ -52,4 +50,4 @@ class HttpObservatoryTests(LiveServerTestCase):
         assert results["scan"]["score"] >= 100
 
         # Display report through browser
-        self.selenium.get(self.live_server_url + reverse("scan"))
+        self.selenium.get(self.live_server_url + reverse("scan-default"))

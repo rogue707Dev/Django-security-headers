@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # SecurityMiddleware settings
 CSRF_COOKIE_SECURE = True  # set to False for localhost development
 SECURE_BROWSER_XSS_FILTER = True
