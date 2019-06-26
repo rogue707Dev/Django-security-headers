@@ -17,7 +17,7 @@ setup(
     description="A simple app to add configurable security headers to Django "
     "responses.",
     long_description=README,
-    url="",
+    url="https://django-security-headers.readthedocs.io/en/latest/",
     author="Scivero",
     author_email="",
     install_requires=["django-csp"],
