@@ -6,3 +6,6 @@ __pycache__
 pip-wheel-metadata
 .pytest_cache
 *.log
+_build
+_static
+_templates

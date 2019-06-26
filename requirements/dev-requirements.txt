@@ -5,4 +5,5 @@
 pre-commit
 pytest-django
 selenium<4
+sphinx
 tox
