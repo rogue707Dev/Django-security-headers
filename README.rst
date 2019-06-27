@@ -1,1 +1,1 @@
-https://django-security-headers.readthedocs.io/en/latest/
+https://django-security-headers.readthedocs.io/en/stable/
