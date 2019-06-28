@@ -15,7 +15,7 @@ ROOT_URLCONF = "security_headers.urls"
 
 INSTALLED_APPS = [
     "security_headers",
-    "sslserver",
+    "sslserver",  # For development only
     "csp",
     "django.contrib.admin",
     "django.contrib.auth",

@@ -24,6 +24,7 @@ setup(
         "django>=1.11,<2",
         "django-cookies-samesite",
         "django-csp",
+        "django-sslserver",
         "httpobs @ https://github.com/jsumnerPhD/http-observatory/archive/v1.1.tar.gz#egg=httpobs-1.1",  # noqa
     ],
     classifiers=[
