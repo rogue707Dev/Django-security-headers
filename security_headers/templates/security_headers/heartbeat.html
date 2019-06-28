@@ -1,0 +1,8 @@
+{% load csp %}
+
+<h1>Heartbeat</h1>
+{{ csrf_token }}
+
+{% script type="application/javascript" async=False %}
+var a;
+{% endscript %}

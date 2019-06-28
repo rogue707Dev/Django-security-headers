@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from httpobs.scanner.local import scan
 
-from django.http import HttpResponse
 from django.template.response import TemplateResponse
 
 
@@ -11,7 +10,7 @@ def _ping(request):
 
     Used for testing package.
     """
-    return HttpResponse("Pong")
+    return TemplateResponse(request, "security_headers/heartbeat.html")
 
 
 def _scan_default(request):
