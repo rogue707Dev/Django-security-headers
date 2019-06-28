@@ -23,7 +23,7 @@ setup(
     install_requires=[
         "django>=1.11,<2",
         "django-csp",
-        "httpobs @ http://github.com/jsumnerPhD/http-observatory/tarball/master#egg=httpobs-1.0",  # noqa
+        "httpobs @ https://github.com/jsumnerPhD/http-observatory/archive/v1.0.tar.gz#egg=httpobs-1.0",  # noqa
     ],
     classifiers=[
         "Environment :: Web Environment",
