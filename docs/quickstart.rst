@@ -8,12 +8,19 @@ Default configuration
 To apply default security headers to all responses:
 
 
-1. Install from ``pip`` ::
+1. Installation
 
-    pip install django-security-headers
+    a. From ``pip`` ::
+
+        pip install django-security-headers
 
 
-2. Add the ``csp`` and ``security_headers`` middleware ::
+    b. To access the ``scan`` function from ``httpobs``, you must install from the git repository.  Add the following to your project requirements ::
+
+        -e git+https://bitbucket.org/scivero/django-security-headers#egg=django-security-headers
+
+
+2. Add the ``csp``, ``security_headers``, and ``samesite`` middlewares ::
 
     MIDDLEWARES = [
       "django.middleware.security.SecurityMiddleware",
@@ -27,6 +34,15 @@ To apply default security headers to all responses:
 
     from security_headers.defaults import *
 
+4. (Optional) If you installed via the bitbucket repo, you can add a scan link to ``urls.py``.  Accessing this link will run a scan against ``https://127.0.0.1:8000/<path>`` where the path is determined from reversing ``url_name``.  Note that the sslserver must be running in parallel to the request.  ::
+
+    from security_headers.views import scan_url
+
+    url(
+        r"^security/(?P<url_name>[\w-]+)/",
+        staff_member_required()(scan_url),
+        name="scan",
+    ),
 
 Optional configuration
 ----------------------
@@ -48,16 +64,32 @@ This will expose a simple admin interface for specifying safe domains.  To acces
       ...
     ]
 
+To use the sslserver ::
+
+    INSTALLED_APPS = [
+      ...
+      "security_headers",
+      "csp",
+      "sslserver",
+      ...
+    ]
+
 
 
 Development settings
 --------------------
 
-During development using http localhost server, you will need to overwrite some default settings that require SSL.  At the very end of your ``settings.py`` file, include ::
+During development using http localhost server, you will need to overwrite some default settings when not using the ssl server.  At the very end of your ``settings.py`` file, include ::
 
-    CSRF_COOKIE_SECURE = not DEBUG
-    SECURE_SSL_REDIRECT = not DEBUG
-    SESSION_COOKIE_SECURE = not DEBUG
+    if "runsslserver" in sys.argv:
+        SSL_CONTEXT = True
+    else:
+        SSL_CONTEXT = False
+
+    CSRF_COOKIE_SECURE = SSL_CONTEXT
+    SECURE_SSL_REDIRECT = SSL_CONTEXT
+    SESSION_COOKIE_SECURE = SSL_CONTEXT
+
     SECURE_HSTS_SECONDS = 3600
 
 Reducing ``SECURE_HSTS_SECONDS`` time is also a good idea during development.

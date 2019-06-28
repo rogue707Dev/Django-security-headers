@@ -10,7 +10,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name="django_security_headers",
-    version="0.0.3",
+    version="0.0.4",
     packages=find_packages(),
     include_package_data=True,
     license="BSD License",
@@ -25,7 +25,6 @@ setup(
         "django-cookies-samesite",
         "django-csp",
         "django-sslserver",
-        "httpobs @ https://github.com/jsumnerPhD/http-observatory/archive/v1.1.tar.gz#egg=httpobs-1.1",  # noqa
     ],
     classifiers=[
         "Environment :: Web Environment",
