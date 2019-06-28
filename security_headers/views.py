@@ -34,5 +34,7 @@ def scan_request(request):
     Importable view to run Http Observatory against a request.
     """
     context = {}
-    context["results"] = scan(request.get_host(), https_port=request.get_port())
+    context["results"] = scan(
+        request.get_host() + request.get_full_path(), https_port=request.get_port()
+    )
     return TemplateResponse(request, "security_headers/scan.html", context=context)
