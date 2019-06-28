@@ -64,7 +64,7 @@ This will expose a simple admin interface for specifying safe domains.  To acces
       ...
     ]
 
-To use the sslserver ::
+To use the sslserver (provided by `django-sslserver <https://github.com/teddziuba/django-sslserver>`_ through ``./manage.py runsslserver``)::
 
     INSTALLED_APPS = [
       ...
@@ -79,7 +79,7 @@ To use the sslserver ::
 Development settings
 --------------------
 
-During development using http localhost server, you will need to overwrite some default settings when not using the ssl server.  At the very end of your ``settings.py`` file, include ::
+During development, you will need to overwrite some default settings if not using the ssl server.  At the very end of your ``settings.py`` file, include ::
 
     if "runsslserver" in sys.argv:
         SSL_CONTEXT = True
