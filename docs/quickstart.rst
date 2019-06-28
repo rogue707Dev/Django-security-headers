@@ -39,13 +39,10 @@ To apply default security headers to all responses:
     from security_headers.views import scan_url
 
     if settings.DEBUG:
-        urlpatterns += [
-            url(
-                r"^security/(?P<url_name>[\w-]+)/",
-                scan_url,
-                name="scan",
-            ),
-        ]
+        urlpatterns += i18n_patterns(
+            url(r"^security/(?P<url_name>[\w-]+)/", scan_url, name="scan")
+        )
+
 
 Optional configuration
 ----------------------
