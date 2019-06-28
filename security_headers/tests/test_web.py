@@ -48,6 +48,6 @@ class HttpObservatoryTests(LiveServerTestCase):
         results = scan("127.0.0.1", https_port="8000", verify=False)
 
         # Display report through browser
-        self.selenium.get(self.live_server_url + reverse("scan-default"))
+        self.selenium.get(self.live_server_url + reverse("scan", args=["heartbeat"]))
 
         assert results["scan"]["score"] >= 100
