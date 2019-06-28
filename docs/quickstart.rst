@@ -19,6 +19,7 @@ To apply default security headers to all responses:
       "django.middleware.security.SecurityMiddleware",
       "csp.middleware.CSPMiddleware",
       "security_headers.middleware.extra_security_headers",
+      "django_cookies_samesite.middleware.CookiesSameSite",
        ...
     ]
 
