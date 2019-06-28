@@ -20,8 +20,10 @@ setup(
     url="https://bitbucket.org/scivero/django-security-headers/src/master/",
     author="Scivero",
     author_email="",
-    install_requires=["django>=1.11,<2", "django-csp", "httpobs"],
-    dependency_links=["git+https://github.com/jsumnerPhD/http-observatory#egg=httpobs"],
+    install_requires=["django>=1.11,<2", "django-csp"],
+    dependency_links=[
+        "http://github.com/jsumnerPhD/http-observatory/tarball/master#egg=httpobs"
+    ],
     classifiers=[
         "Environment :: Web Environment",
         "Framework :: Django",
