@@ -10,8 +10,8 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name="django_security_headers",
-    version="0.0.4",
-    packages=find_packages(),
+    version="0.0.6",
+    packages=find_packages(exclude=["tests"]),
     include_package_data=True,
     license="BSD License",
     description="A simple app to add configurable security headers to Django "

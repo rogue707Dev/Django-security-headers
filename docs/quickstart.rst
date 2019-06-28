@@ -15,9 +15,9 @@ To apply default security headers to all responses:
         pip install django-security-headers
 
 
-    b. To access the ``scan`` function from ``httpobs``, you must install from the git repository.  Add the following to your project requirements ::
+    b. To access the ``scan`` function from ``httpobs``, add the following to your project's dev requirements ::
 
-        -e git+https://bitbucket.org/scivero/django-security-headers#egg=django-security-headers
+        -e git+https://github.com/jsumnerPhD/http-observatory#egg=httpobs
 
 
 2. Add the ``csp``, ``security_headers``, and ``samesite`` middlewares ::
@@ -34,15 +34,18 @@ To apply default security headers to all responses:
 
     from security_headers.defaults import *
 
-4. (Optional) If you installed via the bitbucket repo, you can add a scan link to ``urls.py``.  Accessing this link will run a scan against ``https://127.0.0.1:8000/<path>`` where the path is determined from reversing ``url_name``.  Note that the sslserver must be running in parallel to the request.  ::
+4. (Optional) If you included step 1b, you can add a scan link to ``urls.py``.  Accessing this link will run a scan against ``https://127.0.0.1:8000/<path>`` where the path is determined from reversing ``url_name``.  Note that the sslserver must be running in parallel to the request.  ::
 
     from security_headers.views import scan_url
 
-    url(
-        r"^security/(?P<url_name>[\w-]+)/",
-        staff_member_required()(scan_url),
-        name="scan",
-    ),
+    if settings.DEBUG:
+        urlpatterns += [
+            url(
+                r"^security/(?P<url_name>[\w-]+)/",
+                scan_url,
+                name="scan",
+            ),
+        ]
 
 Optional configuration
 ----------------------
