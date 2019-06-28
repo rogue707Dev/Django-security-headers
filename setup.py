@@ -10,7 +10,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name="django_security_headers",
-    version="0.0.1.post1",
+    version="0.0.2",
     packages=find_packages(),
     include_package_data=True,
     license="BSD License",
@@ -21,6 +21,9 @@ setup(
     author="Scivero",
     author_email="",
     install_requires=["django>=1.11,<2", "django-csp"],
+    dependency_links=[
+        "-e git+https://github.com/jsumnerPhD/http-observatory#egg=httpobs"
+    ],
     classifiers=[
         "Environment :: Web Environment",
         "Framework :: Django",

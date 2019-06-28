@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.template.response import TemplateResponse
 
 
-def ping(request):
+def _ping(request):
     """
     Micro view for checking response headers.
 
@@ -14,7 +14,7 @@ def ping(request):
     return HttpResponse("Pong")
 
 
-def scan_default(request):
+def _scan_default(request):
     """
     Run Http Observatory scan against default localhost.
 

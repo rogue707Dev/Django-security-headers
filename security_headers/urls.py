@@ -6,8 +6,8 @@ from . import views
 
 
 urlpatterns = (
-    url(r"^$", views.ping),
-    url(r"^scan_default/$", views.scan_default, name="scan-default"),
+    url(r"^$", views._ping),
+    url(r"^scan_default/$", views._scan_default, name="scan-default"),
     url(r"^scan/$", views.scan_request, name="scan-request"),
     url(r"^admin/", admin.site.urls),
 )
