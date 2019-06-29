@@ -14,8 +14,8 @@ setup(
     packages=find_packages(exclude=["tests"]),
     include_package_data=True,
     license="BSD License",
-    description="A simple app to add configurable security headers to Django "
-    "responses.",
+    description="A simple app to add some configurable security headers to "
+    "Django 1.11-LTS responses.",
     long_description=README,
     url="https://bitbucket.org/scivero/django-security-headers/src/master/",
     author="Scivero",
