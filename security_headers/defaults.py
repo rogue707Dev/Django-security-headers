@@ -8,7 +8,12 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 SECURE_HSTS_SECONDS = 183 * 24 * 60 * 60  # 6-month default
 SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SECURE = True
+
+# Django 1.11 patches for Django 2.1 functionality
+CSRF_COOKIE_SAMESITE = "Lax"
+SESSION_COOKIE_SAMESITE = "Lax"
 
 # Sample Django-CSP settings
 CSP_DEFAULT_SRC = ["'self'"]

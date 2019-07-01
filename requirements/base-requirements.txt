@@ -1,5 +1,6 @@
 Django>=1.11
 django-csp
+django-cookies-samesite
 django-sslserver
 
 # Fork of http-observatory with install_requires added to setup.py

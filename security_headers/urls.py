@@ -6,8 +6,9 @@ from . import views
 
 
 urlpatterns = (
-    url(r"^$", views._ping),
-    url(r"^scan_default/$", views._scan_default, name="scan-default"),
-    url(r"^scan/$", views.scan_request, name="scan-request"),
+    url(r"^$", views.ping, name="ping"),
+    url(r"^heartbeat/$", views.heartbeat, name="heartbeat"),
+    url(r"^scan/$", views.scan_url, name="scan"),
+    url(r"^scan/(?P<url_name>[\w-]+)/", views.scan_url, name="scan"),
     url(r"^admin/", admin.site.urls),
 )

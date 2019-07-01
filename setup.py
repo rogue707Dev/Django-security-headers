@@ -10,20 +10,21 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name="django_security_headers",
-    version="0.0.3",
-    packages=find_packages(),
+    version="0.0.5",
+    packages=find_packages(exclude=["tests"]),
     include_package_data=True,
     license="BSD License",
-    description="A simple app to add configurable security headers to Django "
-    "responses.",
+    description="A simple app to add some configurable security headers to "
+    "Django 1.11-LTS responses.",
     long_description=README,
     url="https://bitbucket.org/scivero/django-security-headers/src/master/",
     author="Scivero",
     author_email="",
     install_requires=[
         "django>=1.11",
+        "django-cookies-samesite",
         "django-csp",
-        "httpobs @ https://github.com/jsumnerPhD/http-observatory/archive/v1.1.tar.gz#egg=httpobs-1.1",  # noqa
+        "django-sslserver",
     ],
     classifiers=[
         "Environment :: Web Environment",
