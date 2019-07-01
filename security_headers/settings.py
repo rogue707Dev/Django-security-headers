@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
+import django
 import os
+from packaging import version
 import sys
 
 
@@ -25,17 +27,29 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 ]
 
-MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "csp.middleware.CSPMiddleware",
-    "security_headers.middleware.extra_security_headers_middleware",
-    "django_cookies_samesite.middleware.CookiesSameSite",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-]
+if version.parse(django.get_version()) < version.parse("2.1"):
+    MIDDLEWARE = [
+        "django.middleware.security.SecurityMiddleware",
+        "csp.middleware.CSPMiddleware",
+        "security_headers.middleware.extra_security_headers_middleware",
+        "django_cookies_samesite.middleware.CookiesSameSite",
+        "django.contrib.sessions.middleware.SessionMiddleware",
+        "django.middleware.common.CommonMiddleware",
+        "django.middleware.csrf.CsrfViewMiddleware",
+        "django.contrib.auth.middleware.AuthenticationMiddleware",
+        "django.contrib.messages.middleware.MessageMiddleware",
+    ]
+else:
+    MIDDLEWARE = [
+        "django.middleware.security.SecurityMiddleware",
+        "csp.middleware.CSPMiddleware",
+        "security_headers.middleware.extra_security_headers_middleware",
+        "django.contrib.sessions.middleware.SessionMiddleware",
+        "django.middleware.common.CommonMiddleware",
+        "django.middleware.csrf.CsrfViewMiddleware",
+        "django.contrib.auth.middleware.AuthenticationMiddleware",
+        "django.contrib.messages.middleware.MessageMiddleware",
+    ]
 
 TEMPLATES = [
     {
@@ -47,6 +61,7 @@ TEMPLATES = [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ]
         },
     }

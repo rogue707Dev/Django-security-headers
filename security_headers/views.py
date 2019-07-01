@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
-from httpobs.scanner.local import scan
+import django
 
 from django.http import HttpResponse
 from django.template.response import TemplateResponse
 from django.urls import reverse
+
+from httpobs.scanner.local import scan
 
 
 def ping(request):
@@ -36,6 +38,7 @@ def scan_url(request, url_name=None):
         path = "/"
 
     context = {}
+    context["version"] = django.get_version()
     context["url"] = "127.0.0.1" + path
     context["results"] = scan("127.0.0.1", path=path, https_port="8000", verify=False)
     return TemplateResponse(request, "security_headers/scan.html", context=context)

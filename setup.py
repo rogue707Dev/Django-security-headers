@@ -10,18 +10,18 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name="django_security_headers",
-    version="0.0.5",
+    version="0.1",
     packages=find_packages(exclude=["tests"]),
     include_package_data=True,
     license="BSD License",
     description="A simple app to add some configurable security headers to "
-    "Django 1.11-LTS responses.",
+    "Django 1.11-LTS and 2.2-LTS responses.",
     long_description=README,
     url="https://bitbucket.org/scivero/django-security-headers/src/master/",
     author="Scivero",
     author_email="",
     install_requires=[
-        "django>=1.11",
+        "django>=1.11,<2.3",
         "django-cookies-samesite",
         "django-csp",
         "django-sslserver",
