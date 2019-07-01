@@ -16,11 +16,11 @@ Contributing
     python security_headers.py runserver
 
 
-4. To run tests or to get http-observatory scan report, start a secure localhost (at 127.0.0.1:8000) to enable https ::
+4. To get http-observatory scan report, start a separate secure localhost (at 127.0.0.1:8000) to enable https and then navigate to the /scan/<name of url> from runserver  ::
 
     python security_headers.py runsslserver
 
 
-5. Run test suite as a separate process ::
+5. To run test suite ::
 
     pytest
