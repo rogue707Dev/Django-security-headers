@@ -10,7 +10,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name="django_security_headers",
-    version="0.0.2",
+    version="0.0.3",
     packages=find_packages(),
     include_package_data=True,
     license="BSD License",
@@ -21,7 +21,7 @@ setup(
     author="Scivero",
     author_email="",
     install_requires=[
-        "django>=1.11,<2",
+        "django>=1.11",
         "django-csp",
         "httpobs @ https://github.com/jsumnerPhD/http-observatory/archive/v1.1.tar.gz#egg=httpobs-1.1",  # noqa
     ],
@@ -29,10 +29,12 @@ setup(
         "Environment :: Web Environment",
         "Framework :: Django",
         "Framework :: Django :: 1.11",
+        "Framework :: Django :: 2.2",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: BSD License",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.6",
         "Topic :: Internet :: WWW/HTTP",
         "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
     ],
