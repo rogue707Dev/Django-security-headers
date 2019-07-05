@@ -20,13 +20,13 @@ To apply default security headers to all responses:
         -e git+https://github.com/jsumnerPhD/http-observatory#egg=httpobs
 
 
-2. Add the ``csp``, ``security_headers``, and ``samesite`` middlewares ::
+2. Add the ``csp``, ``security_headers`` middlewares.  For Django 1.11, also add the ``samesite`` middleware  ::
 
     MIDDLEWARES = [
       "django.middleware.security.SecurityMiddleware",
       "csp.middleware.CSPMiddleware",
-      "security_headers.middleware.extra_security_headers",
-      "django_cookies_samesite.middleware.CookiesSameSite",
+      "security_headers.middleware.extra_security_headers_middleware",
+      "django_cookies_samesite.middleware.CookiesSameSite", # Not needed for Django 2.2
        ...
     ]
 
@@ -34,7 +34,22 @@ To apply default security headers to all responses:
 
     from security_headers.defaults import *
 
-4. (Optional) If you included step 1b, you can add a scan link to ``urls.py``.  Accessing this link will run a scan against ``https://127.0.0.1:8000/<path>`` where the path is determined from reversing ``url_name``.  Note that the sslserver must be running in parallel to the request.  ::
+
+4. Add ``security_headers`` to your ``INSTALLED_APPS``.  ::
+
+    INSTALLED_APPS = [
+      ...
+      "security_headers",
+      ...
+    ]
+
+This will expose a simple admin interface for specifying safe domains.
+
+
+Optional configuration
+----------------------
+
+If you included step 1b, you can add a scan link to ``urls.py``.  Accessing this link will run a scan against ``https://127.0.0.1:8000/<path>`` where the path is determined from reversing ``url_name``.  Note that the sslserver must be running in parallel to the request.  ::
 
     from security_headers.views import scan_url
 
@@ -43,19 +58,12 @@ To apply default security headers to all responses:
             url(r"^security/(?P<url_name>[\w-]+)/", scan_url, name="scan")
         )
 
+For newer Django syntax ::
 
-Optional configuration
-----------------------
+    urlpatterns += [path("security/<slug:url_name>/", scan_url, name="scan")]
+    
 
-To permit framing from whitelisted domains, add ``security_headers`` to your ``INSTALLED_APPS``.  ::
-
-    INSTALLED_APPS = [
-      ...
-      "security_headers",
-      ...
-    ]
-
-This will expose a simple admin interface for specifying safe domains.  To access template tags provided by ``django-csp``, install ``csp`` as well  ::
+To access template tags provided by ``django-csp``, add ``csp`` to ``INSTALLED_APPS``  ::
 
     INSTALLED_APPS = [
       ...
@@ -64,7 +72,7 @@ This will expose a simple admin interface for specifying safe domains.  To acces
       ...
     ]
 
-To use the sslserver (provided by `django-sslserver <https://github.com/teddziuba/django-sslserver>`_ through ``./manage.py runsslserver``)::
+To use the sslserver (provided by `django-sslserver <https://github.com/teddziuba/django-sslserver>`_ through ``./manage.py runsslserver``) ::
 
     INSTALLED_APPS = [
       ...
