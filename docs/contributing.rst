@@ -24,3 +24,14 @@ Contributing
 5. To run test suite ::
 
     pytest
+
+
+6. To test build ::
+
+    tox
+
+
+7. To make docs locally ::
+
+    cd docs
+    make html
