@@ -25,9 +25,9 @@ def extra_security_headers_middleware(get_response):
             resp["Referrer-Policy"] = "same-origin"
 
         if hasattr(settings, "FEATURE_POLICY"):
-            resp["Feature-Policy"] = " ".join(settings.FEATURE_POLICY)
+            resp["Feature-Policy"] = "; ".join(settings.FEATURE_POLICY)
         else:
-            resp["Feature-Policy"] = " ".join(
+            resp["Feature-Policy"] = "; ".join(
                 [
                     "autoplay 'none'",
                     "camera 'none'",
