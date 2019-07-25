@@ -61,7 +61,7 @@ If you included step 1b, you can add a scan link to ``urls.py``.  Accessing this
 For newer Django syntax ::
 
     urlpatterns += [path("security/<slug:url_name>/", scan_url, name="scan")]
-    
+
 
 To access template tags provided by ``django-csp``, add ``csp`` to ``INSTALLED_APPS``  ::
 
@@ -91,13 +91,13 @@ During development, you will need to overwrite some default settings if not usin
 
     if "runsslserver" in sys.argv:
         SSL_CONTEXT = True
+        SECURE_HSTS_SECONDS = 3600
     else:
         SSL_CONTEXT = False
+        SECURE_HSTS_SECONDS = 0
 
     CSRF_COOKIE_SECURE = SSL_CONTEXT
     SECURE_SSL_REDIRECT = SSL_CONTEXT
     SESSION_COOKIE_SECURE = SSL_CONTEXT
-
-    SECURE_HSTS_SECONDS = 3600
 
 Reducing ``SECURE_HSTS_SECONDS`` time is also a good idea during development.
