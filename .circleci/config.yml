@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  tox:
+  build:
     docker:
       - image: circleci/python:3.6.1-browsers
       - image: circleci/python:3.7.1-browsers
