@@ -97,6 +97,7 @@ During development, you will need to overwrite some default settings if not usin
         SECURE_HSTS_SECONDS = 0
         CSRF_COOKIE_NAME = 'csrftoken'
 
+    CSRF_COOKIE_HTTPONLY = SSL_CONTEXT
     CSRF_COOKIE_SECURE = SSL_CONTEXT
     SECURE_SSL_REDIRECT = SSL_CONTEXT
     SESSION_COOKIE_SECURE = SSL_CONTEXT
