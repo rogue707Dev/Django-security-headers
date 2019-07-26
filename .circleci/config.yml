@@ -2,8 +2,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6.1-node-browsers
-      - image: circleci/python:3.7.1-node-browsers
+      - image: circleci/python:3.6-node-browsers
+      - image: circleci/python:3.7-node-browsers
 
     working_directory: ~/repo
 
