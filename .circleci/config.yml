@@ -14,7 +14,7 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            pip install django==2.2
+            pip install -r requirements/base-requirements.txt
             pip install tox
       - run:
           name: make sqlite3 db
