@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
-import os
-
 from httpobs.scanner.local import scan
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.firefox.options import Options
 
+from django.conf import settings
 from django.test import LiveServerTestCase
 from django.urls import reverse
 
@@ -39,7 +38,7 @@ class HttpObservatoryTests(LiveServerTestCase):
     def setUpClass(cls):
         super(HttpObservatoryTests, cls).setUpClass()
         options = Options()
-        if os.environ.get("HEADLESS", True):
+        if hasattr(settings, "HEADLESS_TESTING") and settings.HEADLESS_TESTING:
             options.headless = True
         cls.selenium = WebDriver(options=options)
         cls.selenium.implicitly_wait(10)

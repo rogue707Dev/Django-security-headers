@@ -23,8 +23,6 @@ jobs:
             python3 security_headers.py migrate
       - run:
           name: run tox
-          environment:
-            HEADLESS: True
           command: |
             . venv/bin/activate
             tox
