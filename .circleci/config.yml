@@ -20,7 +20,7 @@ jobs:
           name: make sqlite3 db
           command: |
             . venv/bin/activate
-            manage.py migrate
+            python3 manage.py migrate
       - run:
           name: run tox
           enviroment:
