@@ -20,6 +20,6 @@ jobs:
           enviroment:
             HEADLESS: True
           command: |
-            manage.py migrate
             . venv/bin/activate
+            ./manage.py migrate
             tox
