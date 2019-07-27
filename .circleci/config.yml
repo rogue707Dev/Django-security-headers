@@ -10,16 +10,17 @@ jobs:
     steps:
       - checkout
       - run:
-          name: make sqlite3 db
-          command: |
-            pip install django==2.2
-            ./manage.py migrate
-      - run:
           name: make virtualenv
           command: |
             python3 -m venv venv
             . venv/bin/activate
+            pip install django==2.2
             pip install tox
+      - run:
+          name: make sqlite3 db
+          command: |
+            . venv/bin/activate
+            manage.py migrate
       - run:
           name: run tox
           enviroment:
