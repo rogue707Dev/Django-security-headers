@@ -10,6 +10,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: make sqlite3 db
+          command: |
+            pip install django<2.3
+            ./manage.py migrate
+      - run:
           name: make virtualenv
           command: |
             python3 -m venv venv
@@ -21,5 +26,4 @@ jobs:
             HEADLESS: True
           command: |
             . venv/bin/activate
-            ./manage.py migrate
             tox
