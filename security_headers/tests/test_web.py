@@ -39,7 +39,7 @@ class HttpObservatoryTests(LiveServerTestCase):
     def setUpClass(cls):
         super(HttpObservatoryTests, cls).setUpClass()
         options = Options()
-        if os.environ.get("HEADLESS", False):
+        if os.environ.get("HEADLESS", True):
             options.headless = True
         cls.selenium = WebDriver(options=options)
         cls.selenium.implicitly_wait(10)
