@@ -22,7 +22,7 @@ setup(
     author_email="",
     install_requires=[
         "django>=1.11,<2.3",
-        "django-cookies-samesite",
+        "django_cookies_samesite @ git+https://github.com/SALTISES4/django-cookies-samesite",  # noqa
         "django-csp",
         "django-sslserver",
     ],

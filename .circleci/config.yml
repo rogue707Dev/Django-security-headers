@@ -3,7 +3,11 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.6-node-browsers
+        enviroment:
+          HEADLESS: True
       - image: circleci/python:3.7-node-browsers
+        enviroment:
+          HEADLESS: True
 
     working_directory: ~/repo
 
