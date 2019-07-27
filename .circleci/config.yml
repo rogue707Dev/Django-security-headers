@@ -23,7 +23,7 @@ jobs:
             python3 manage.py migrate
       - run:
           name: run tox
-          enviroment:
+          environment:
             HEADLESS: True
           command: |
             . venv/bin/activate
