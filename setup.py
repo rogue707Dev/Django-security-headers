@@ -10,7 +10,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name="django_security_headers",
-    version="0.2.3",
+    version="0.2.4",
     packages=find_packages(exclude=["tests"]),
     include_package_data=True,
     license="BSD License",
@@ -22,7 +22,7 @@ setup(
     author_email="",
     install_requires=[
         "django>=1.11,<2.3",
-        "django_cookies_samesite @ git+https://github.com/SALTISES4/django-cookies-samesite",  # noqa
+        "django-cookies-samesite-fork",
         "django-csp",
         "django-sslserver",
     ],

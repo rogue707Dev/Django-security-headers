@@ -1,7 +1,6 @@
 Django>=1.11
 django-csp
-# Fork of django-cookies-samesite that uses correct cookie names
--e git+https://github.com/SALTISES4/django-cookies-samesite#egg=django_cookies_samesite
+django-cookies-samesite-fork
 django-sslserver
 # Fork of http-observatory with install_requires added to setup.py
 -e git+https://github.com/jsumnerPhD/http-observatory#egg=httpobs
