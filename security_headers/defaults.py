@@ -26,6 +26,8 @@ CSP_MEDIA_SRC = ["*", "data:"]
 CSP_SCRIPT_SRC = ["'self'"]
 CSP_STYLE_SRC = ["'self'"]
 CSP_INCLUDE_NONCE_IN = ["script-src", "style-src"]
+CSP_UPGRADE_INSECURE_REQUESTS = True
+CSP_BLOCK_ALL_MIXED_CONTENT = True
 CSP_REPORT_PERCENTAGE = 0.1
 
 # Default extra security header settings
