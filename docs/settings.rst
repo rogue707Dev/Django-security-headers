@@ -170,6 +170,16 @@ CSP_INCLUDE_NONCE_IN
 
 Default: ``["script-src", "style-src"]``
 
+CSP_UPGRADE_INSECURE_REQUESTS
+~~~~~~~~~~~~~~~~~~~~
+
+Default: ``True``
+
+CSP_BLOCK_ALL_MIXED_CONTENT
+~~~~~~~~~~~~~~~~~~~~
+
+Default: ``True``
+
 CSP_REPORT_PERCENTAGE
 ~~~~~~~~~~~~~~~~~~~~~
 
