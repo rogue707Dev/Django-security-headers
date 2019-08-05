@@ -1,6 +1,9 @@
 Quick start
 ===========
 
+.. danger::
+    The default security settings set by this package are aggressive, especially concerning HSTS.  Do not deploy in a production environment with default settings unless you are certain your server configuration is compatible.
+
 
 Default configuration
 ---------------------
@@ -83,7 +86,7 @@ To use the sslserver (provided by `django-sslserver <https://github.com/teddziub
 Development settings
 --------------------
 
-During development, you will need to overwrite some default settings if not using the ssl server.  At the very end of your ``settings.py`` file, include ::
+During development, you will need to overwrite some default settings if not using the ssl server.  At the very end of your ``settings.py`` file, include (this is conveniently done through an imported ``local_settings.py``)::
 
     if "runsslserver" in sys.argv:
         SSL_CONTEXT = True
