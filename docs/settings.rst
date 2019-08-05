@@ -218,3 +218,14 @@ Default: ::
 
 .. tip::
     See Scott Helme's discussion on the new `feature policy header <https://scotthelme.co.uk/a-new-security-header-feature-policy/>`_.
+
+
+FRAMING_ALLOWED_FROM
+~~~~~~~~~~~~~~~~~~~~
+
+Default: ``deny``
+
+Safe domains for ``X-FRAME-OPTIONS`` can be specified two ways:
+
+  1. Through the admin interface, or
+  2. In ``settings.py`` by assigning a list to ``FRAMING_ALLOWED_FROM``.  This list supersedes any database entries: if this list is set, domains entered through admin are ignored.  To allow all domains, set ``FRAMING_ALLOWED_FROM = ["*"]``
