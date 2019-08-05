@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.conf import settings
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ImproperlyConfigured, ObjectDoesNotExist
 
 from security_headers.models import FramingAllowedFrom
 
@@ -13,11 +13,33 @@ def extra_security_headers_middleware(get_response):
     def middleware(req):
         resp = get_response(req)
 
+        domain = req.get_host()
+
         try:
-            allowed_domain = FramingAllowedFrom.objects.get(domain=req.get_host())
-            resp["X-Frame-Options"] = "allow-from {}".format(allowed_domain)
-        except ObjectDoesNotExist:
-            resp["X-Frame-Options"] = "deny"
+            allowed_domains = settings.FRAMING_ALLOWED_FROM
+            if not isinstance(allowed_domains, list):
+                raise ImproperlyConfigured(
+                    """
+                    If specified in settings.py, FRAMING_ALLOWED_FROM must be a
+                    list of allowed domains.
+
+                    As a security measure, any list specified in settings.py
+                    overrides any database entries to provide sys admins with a
+                    veto over user settings.
+                    """
+                )
+
+            if "*" in allowed_domains or domain in allowed_domains:
+                resp["X-Frame-Options"] = "allow-from {}".format(domain)
+            else:
+                resp["X-Frame-Options"] = "deny"
+
+        except AttributeError:
+            try:
+                allowed_domain = FramingAllowedFrom.objects.get(domain=req.get_host())
+                resp["X-Frame-Options"] = "allow-from {}".format(allowed_domain)
+            except ObjectDoesNotExist:
+                resp["X-Frame-Options"] = "deny"
 
         if hasattr(settings, "REFERRER_POLICY"):
             resp["Referrer-Policy"] = settings.REFERRER_POLICY
