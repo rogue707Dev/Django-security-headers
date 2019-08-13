@@ -100,5 +100,6 @@ During development, you will need to overwrite some default settings if not usin
     CSRF_COOKIE_SECURE = SSL_CONTEXT
     SECURE_SSL_REDIRECT = SSL_CONTEXT
     SESSION_COOKIE_SECURE = SSL_CONTEXT
+    CSP_UPGRADE_INSECURE_REQUESTS = SSL_CONTEXT
 
 Reducing ``SECURE_HSTS_SECONDS`` time is also a good idea during development.
