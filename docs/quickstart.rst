@@ -23,7 +23,7 @@ To apply default security headers to all responses:
         -e git+https://github.com/jsumnerPhD/http-observatory#egg=httpobs
 
 
-2. Add the ``csp``, ``security_headers`` middlewares.  For Django 1.11, also add the ``samesite`` middleware  ::
+2. Add the ``csp`` and ``security_headers`` middlewares.  For Django 1.11, also add the ``samesite`` middleware  ::
 
     MIDDLEWARES = [
       "django.middleware.security.SecurityMiddleware",
@@ -43,6 +43,11 @@ To apply default security headers to all responses:
     ]
 
 This will expose a simple admin interface for specifying safe domains.
+
+
+4. Import default security settings in your project ``settings.py``  ::
+
+    from security_headers.defaults import *  # noqa F403
 
 
 Optional configuration
