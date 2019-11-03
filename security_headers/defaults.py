@@ -16,8 +16,11 @@ CSRF_COOKIE_SAMESITE = "Lax"
 SESSION_COOKIE_SAMESITE = "Lax"
 
 # Sample Django-CSP settings
+CSP_BASE_URI = ["'none'"]
 CSP_DEFAULT_SRC = ["'self'"]
 CSP_FONT_SRC = ["'self'"]
+CSP_FORM_ACTION = ["'self'"]
+CSP_FRAME_ANCESTORS = ["'none'"]
 CSP_FRAME_SRC = ["*"]
 CSP_IMG_SRC = ["*", "data:"]
 CSP_MEDIA_SRC = ["*", "data:"]

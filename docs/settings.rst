@@ -124,6 +124,12 @@ Django-CSP settings
 
 See the `django-csp docs <https://django-csp.readthedocs.io/en/latest/>`_ for full details.
 
+CSP_BASE_URI
+~~~~~~~~~~~~~~~
+
+Default: ``["'none'"]``
+
+
 CSP_DEFAULT_SRC
 ~~~~~~~~~~~~~~~
 
@@ -134,6 +140,18 @@ CSP_FONT_SRC
 ~~~~~~~~~~~~
 
 Default: ``["'self'"]``
+
+
+CSP_FORM_ACTION
+~~~~~~~~~~~~~~~
+
+Default: ``["'self'"]``
+
+
+CSP_FRAME_ANCESTORS
+~~~~~~~~~~~~~~~~~~~
+
+Default: ``["'none'"]``
 
 
 CSP_FRAME_SRC
